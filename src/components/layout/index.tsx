@@ -1,5 +1,6 @@
 import { JSX, FC, CSSProperties } from "react"
 import { Layout as Container, theme} from "antd"
+import FilterBar from "@components/filter"
 
 const { 
     Header, 
@@ -14,10 +15,15 @@ const Layout: FC = (): JSX.Element => {
     const containerStyle: CSSProperties = {
         minHeight: "100vh",
         height: "100%",
+        width: "100%"
     }
 
     const headerStyle: CSSProperties = {
         background: colorBgContainer,
+    }
+
+    const contentStyle: CSSProperties = {
+        width: "100%",
     }
 
     return (
@@ -27,10 +33,12 @@ const Layout: FC = (): JSX.Element => {
             <Header
                 style={headerStyle}
             >
-                <>header</>
+                <FilterBar />
             </Header>
-            <Content>
-                <>Content</>
+            <Content
+                style={contentStyle}
+            >
+                <div>Content</div>
             </Content>
         </Container>
     )

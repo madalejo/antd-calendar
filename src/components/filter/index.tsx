@@ -1,6 +1,5 @@
 import { JSX, FC, CSSProperties, useState } from "react"
 import { Button, Radio, Space } from "antd"
-import { LeftOutlined } from '@ant-design/icons' // Import Ant icons
 
 import { Icon } from "@iconify/react"
 

@@ -1,6 +1,8 @@
-import { JSX, FC, CSSProperties } from "react"
+import { JSX, FC, CSSProperties, useState } from "react"
 import { Layout as Container, theme} from "antd"
+
 import FilterBar from "@components/filter"
+import { Day, Week, Month } from "@components/calendar"
 
 const { 
     Header, 
@@ -8,6 +10,8 @@ const {
 } = Container
 
 const Layout: FC = (): JSX.Element => {
+    const [view, setView] = useState<number>(0)
+
     const {
         token: { colorBgContainer }
     } = theme.useToken()
@@ -33,12 +37,22 @@ const Layout: FC = (): JSX.Element => {
             <Header
                 style={headerStyle}
             >
-                <FilterBar />
+                <FilterBar 
+                    view={view}
+                    setView={setView}
+                />
             </Header>
             <Content
                 style={contentStyle}
             >
-                <div>Content</div>
+                {
+                    view === 0 ? 
+                        <Day />
+                    : view === 1 ?
+                        <Week />
+                    :   
+                        <Month />
+                }
             </Content>
         </Container>
     )

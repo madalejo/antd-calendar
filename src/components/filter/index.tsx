@@ -1,5 +1,5 @@
-import { JSX, FC, CSSProperties, useState } from "react"
-import { Button, Radio, Space } from "antd"
+import { JSX, CSSProperties, Dispatch, SetStateAction } from "react"
+import { Button, DatePicker, Radio, Space } from "antd"
 
 import { Icon } from "@iconify/react"
 
@@ -27,8 +27,13 @@ const radioOptions = [
     }
 ]
 
-const FilterBar: FC = (): JSX.Element => {
-    const [view, setView] = useState<number>(0)
+const FilterBar = ({
+    view,
+    setView
+}: {
+    view: number
+    setView: Dispatch<SetStateAction<number>>
+}): JSX.Element => {
 
     const handleView = (value: number): void => {
         setView(value)
@@ -39,7 +44,11 @@ const FilterBar: FC = (): JSX.Element => {
             style={containerStyle}
         >
             <Space>
-                <Button>Today</Button>
+                <Button
+                    type="primary"
+                >
+                    Today
+                </Button>
                 <Button 
                     icon={
                         <Icon 
@@ -56,6 +65,7 @@ const FilterBar: FC = (): JSX.Element => {
                         />
                     }
                 />
+                <DatePicker />
             </Space>
             <Space>
                 <Radio.Group 
